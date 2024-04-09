@@ -4,7 +4,12 @@
 /* ------------------------------------------------------*/
 
 console.info("1/ Implémentez une fonction qui prend en paramètre les dimensions de 2 côtés d'un triangle rectangle et retourne la dimension de l'hypoténuse.");
-
+/**
+ * calculate hypotenuse from a triangle
+ * @param {number} sideA 
+ * @param {number} sideB 
+ * @returns {number} hypotenuse from triangle
+ */
 function calculateHypotenuse (sideA, sideB){
 
     return Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2))
@@ -22,15 +27,43 @@ const user2 = {firstName: "Samir", lastName: "Ah", age: 22};
 const user3 = {firstName: "Loanne", lastName: "Bourdin", age: 28};
 const user4 = {firstName: "Abdel", lastName: "Dems", age: 44};
 
-console.log();
-console.log();
+/**
+ * get the firstname and lastname between two users based on age
+ * @param {object} user1 
+ * @param {object} user2 
+ * @returns {string} firstname an lastname from oldest
+ */
+function getUserFirstAndLastName (user1, user2){
+if (user1.age > user2.age){
+    return user1.firstName + " " + user1.lastName
+} else {
+    return user2.firstName + " " + user2.lastName
+}
+}
+
+console.log(getUserFirstAndLastName (user1, user2));
+console.log(getUserFirstAndLastName(user3, user4));
 
 /* ------------------------------------------------------*/
 
 console.info("3/ Implémentez une fonction qui retourne la valeur la plus grande d'un tableau de nombres, quelqu'en soit la taille.");
+/**
+ * get the max value from an array despite of his length
+ * @param {array} array 
+ * @returns {number} highest value from the array
+ */
+function getMaxValueFromArray (array) {
+    let maxValue = array[0];
+    for (let i = 0; i< array.length; i++) {
+        if (array[i] > maxValue) {
+            maxValue = array[i];
+        }
+    }
+    return maxValue
+}
 
-console.log();
-console.log();
+console.log(getMaxValueFromArray([12, 56, 69, 84, 38]));
+console.log(getMaxValueFromArray([58, 79, 32, 15, 24]));
 
 /* ------------------------------------------------------*/
 
@@ -42,16 +75,47 @@ console.log();
 /* ------------------------------------------------------*/
 
 console.info("5/ Implémentez une fonction qui retourne une valeur entière alétoire comprise entre 2 valeurs passées en paramètres.");
+/**
+ * Gzet a random value between two others values
+ * @param {string} min 
+ * @param {string} max 
+ * @returns {number} random value between two others values
+ */
+function getRandomValueBetweenTwoNumbers (min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor (Math.random() * (max - min + 1)) + min;
+}
 
-console.log();
-console.log();
+console.log(getRandomValueBetweenTwoNumbers (10, 100));
+console.log(getRandomValueBetweenTwoNumbers (1, 30));
 
 /* ------------------------------------------------------*/
 
 console.info("6/ Implémentez une fonction qui retourne une chaîne de caractère aléatoire composée de chiffres et de lettres en majuscule et minuscule, de la taille passée en paramètre.");
+/**
+ * Get a random string composed of letters and numbers from size in parameters
+ * @param {string} length 
+ * @returns {string} random string from size in parameters
+ */
+function generateRandomString (length){
+    let result = ' ';
+    const characters = 'AZERTYUIOPMLKJHGFDSQWXCVBNazertyuiopmlkjhgfdsqwxcvbn123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
 
-console.log();
-console.log();
+    while (counter < length) {
+
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+
+    return result;
+}
+   
+
+console.log(generateRandomString (30));
+console.log(generateRandomString(20));
 
 /* ------------------------------------------------------*/
 
