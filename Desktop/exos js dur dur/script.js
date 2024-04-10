@@ -28,21 +28,21 @@ const user3 = {firstName: "Loanne", lastName: "Bourdin", age: 28};
 const user4 = {firstName: "Abdel", lastName: "Dems", age: 44};
 
 /**
- * get the firstname and lastname between two users based on age
+ * get  firstname and lastname from oldest user
  * @param {object} user1 
  * @param {object} user2 
  * @returns {string} firstname an lastname from oldest
  */
-function getUserFirstAndLastName (user1, user2){
+function getOldestUserFirstAndLastName (user1, user2){
 if (user1.age > user2.age){
-    return user1.firstName + " " + user1.lastName
+    return user1.firstName + " " + user1.lastName;
 } else {
-    return user2.firstName + " " + user2.lastName
+    return user2.firstName + " " + user2.lastName;
 }
 }
 
-console.log(getUserFirstAndLastName (user1, user2));
-console.log(getUserFirstAndLastName(user3, user4));
+console.log(getOldestUserFirstAndLastName (user1, user2));
+console.log(getOldestUserFirstAndLastName(user3, user4));
 
 /* ------------------------------------------------------*/
 
@@ -69,7 +69,37 @@ console.log(getMaxValueFromArray([58, 79, 32, 15, 24]));
 
 console.info("4/ Implémentez une fonction qui prend en paramètre un texte et retourne un objet comptant le nombre d'occurence de chaque mot.");
 
-console.log();
+function countWords(text) {
+   
+    const cleanedText = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
+
+   
+    const wordsArray = cleanedText.split(" ");
+
+    
+    const wordCount = {};
+
+  
+    for (const word of wordsArray) {
+        if (word !== '') {
+            if (wordCount.hasOwnProperty(word)) {
+                wordCount[word]++;
+            } else {
+                wordCount[word] = 1;
+            }
+        }
+    }
+
+    
+    return wordCount;
+}
+
+
+
+const text = "Hello, world! This is a test. Hello, again, world!";
+const wordCounts = countWords(text);
+
+console.log(wordCounts);
 console.log();
 
 /* ------------------------------------------------------*/
@@ -134,13 +164,29 @@ const newbie = {
 
 console.info("7/ Implémentez une méthode retournant l'âge de Paul.");
 
-console.log();
+
+/**
+ * get the age of the user
+ * @param {string} person 
+ * @returns {number} age of the user
+ */
+function getUserAge (person) {
+    const currentYear = new Date().getFullYear();
+    const birthYear =new Date(person.birthdate).getFullYear();
+    return currentYear - birthYear;
+}
+console.log(getUserAge(newbie));
+
 
 /* ------------------------------------------------------*/
 
 console.info("8/ Implémentez une méthode retournant un texte listant les compétences de Paul séparées par des virgules.");
 
-console.log();
+function listTheUserSkills (person){
+    return person.skills.join(" , ");
+}
+
+console.log(listTheUserSkills(newbie));
 
 /* ------------------------------------------------------*/
 
